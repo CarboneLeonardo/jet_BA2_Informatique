@@ -16,14 +16,8 @@ abstract class Vehicule() : Observer {
 
 
 
-    override fun Update() { // A voir si on change pas le nom de "Update" par "Scan".
-    if((Usable == true)and(position<200)){
-        println("c'est faux,ce que j'écris")
-        // Doit être changé dans les classes "Trotinette" et "vehicule"
-    }
-    else{
-        println("pas dispo")
-        }
+    override fun Update():Boolean { // A voir si on change pas le nom de "Update" par "Scan".
+        return (Usable == true)and(position<200)
     }
     fun describe():ArrayList<String>{
     // 1) donnes les imforamtions suivantes :

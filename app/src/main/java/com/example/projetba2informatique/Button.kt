@@ -1,23 +1,20 @@
 package com.example.projetba2informatique
 import android.graphics.Color
 
-class Button {
+class Button() {
 
     //var color = color.argb()
-    val vehicule : arraylistOf<Vehicule>()
-    lateinit var ecurie: Ecurie
     var compteur = 1
 
-    fun Scan(num:Int){
+    fun Scan(ecurie:Ecurie,num:Int){
 
     // 2)display sur l'interface graphique les infomartions relatives au vehicule.
-        ecurie.hasUpdated(vehicule) // Doit rendre une liste contenant tous les vehicules possibles
-    // 3) Doit "show" les vehicules
-        vehicule(compteur).describe()
+        ecurie.hasUpdated() // Doit rendre une liste contenant tous les vehicules possibles
+
     }
     fun next(){
 
-        vehicule(compteur).describe()
+        //vehicules(compteur).describe()
 
 
 
