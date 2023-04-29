@@ -1,5 +1,21 @@
 package com.example.projetba2informatique
 
-class Trotinette(val QRcode:Int):Vehicule() {
+import kotlin.random.Random
+
+class Trotinette(override val QRcode:Int):Vehicule(){
+
+    override val type = "Trotinette"
+    override val Capacite = Random.nextInt(1,100)
+    private val Carburant = Random.nextDouble(0.3,0.9)
+
+    override val moteur : Moteur = Moteur(Capacite,Carburant)
+
+
+
+//    override fun describe(){
+//
+//
+//    }
+
 
 }

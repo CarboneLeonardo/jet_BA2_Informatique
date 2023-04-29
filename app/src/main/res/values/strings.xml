@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Projet BA2 Informatique</string>
+    <string name="typeTexT">ligne1 \n ligne2 \n ligne3 \n ligne4</string>
 </resources>

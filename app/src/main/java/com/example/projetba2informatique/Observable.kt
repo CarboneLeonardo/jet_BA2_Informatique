@@ -9,8 +9,12 @@ interface Observable {
     fun remove(observer: Observer) {
         observers.remove(observer)
     }
-    fun hasUpdated(){
-        observers.forEach{ if(it.Update() == true){vehicules.add(it)} }
+    fun add_vehicule(observer: Observer){
+        vehicules.add(observer)
+    }
+    fun hasUpdated():ArrayList<Observer>{
+        observers.forEach{ if(it.Update() == true){add_vehicule(it)} }
+        return vehicules
     }
 
 }
