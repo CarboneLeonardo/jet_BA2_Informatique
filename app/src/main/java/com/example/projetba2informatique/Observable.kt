@@ -6,8 +6,8 @@ interface Observable {
     fun add(observer: Observer) {
         observers.add(observer)
     }
-    fun remove(observer: Observer) {
-        observers.remove(observer)
+    fun remove_vehicule(observer: Observer) {
+        vehicules.remove(observer)
     }
     fun add_vehicule(observer: Observer){
         vehicules.add(observer)

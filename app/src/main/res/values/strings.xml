@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Projet BA2 Informatique</string>
-    <string name="typeTexT">ligne1 \n ligne2 \n ligne3 \n ligne4</string>
+    <string name="typeTexT">Type: \n QRcode: \n Distance: \n Capacite: \n Carburant: </string>
+    <string name="solde"> 4000 </string>
 </resources>
