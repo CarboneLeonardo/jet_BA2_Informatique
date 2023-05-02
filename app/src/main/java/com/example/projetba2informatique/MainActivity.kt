@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     private val ecurie = Ecurie()
 
     private val nombre_trotinette = 10
-    private val nombre_voiture = 10
+    private val nombre_voiture = 1
     private val MoneyAccount = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         solde.text = MoneyAccount.toString()
         val Account = Account.getInstance(MoneyAccount) // instancie l'account
 
-        var liste_vehicules = arrayListOf<Observer>()
+        var liste_vehicules = arrayListOf<Vehicule>()
         var QRcode = 0
         var length = 0
 
@@ -64,14 +64,20 @@ class MainActivity : AppCompatActivity() {
             liste_vehicules = ecurie.hasUpdated() // return: Liste contenant les vehicules utilisables à moins de 200m
             //QRcode=1 à tester
             length = liste_vehicules.size // Enregistre le nombre de vehicules utilisables
-
-            descriptif.text = liste_vehicules[QRcode].describe() // Liste contenant toutes les infos à montrer su l'interface graphique
-            // Reste plus qu'a changer l'interface graphique pour ce boutton !
-
-
-            Next.visibility = View.VISIBLE
-            Rent.visibility = View.VISIBLE
+            if (length==0){
+                descriptif.text = "il n'y a pas de vehicules disponibles à moins de 200m"
+                Next.visibility = View.INVISIBLE
+                Rent.visibility = View.INVISIBLE
             }
+            else{
+                descriptif.text = liste_vehicules[QRcode].describe() // Liste contenant toutes les infos à montrer su l'interface graphique
+                // Reste plus qu'a changer l'interface graphique pour ce boutton !
+
+
+                Next.visibility = View.VISIBLE
+                Rent.visibility = View.VISIBLE
+            }
+        }
 
 
 
@@ -85,7 +91,6 @@ class MainActivity : AppCompatActivity() {
             }
             else if(liste_vehicules[QRcode].getUsability()==false){
                 descriptif.text = "veuilliez appuyer sur le boutton \"NEXT\""
-
             }
             else{
                 liste_vehicules[QRcode].Usable(false)
@@ -107,9 +112,16 @@ class MainActivity : AppCompatActivity() {
             if (liste_vehicules[QRcode].getUsability()==false){
                 ecurie.remove_vehicule(liste_vehicules[QRcode])
                 length = liste_vehicules.size
-                if(QRcode>=length){QRcode=0}
-                QRcode +=1
-                descriptif.text = liste_vehicules[QRcode].describe()
+                if (length==0){
+                    descriptif.text = "il n'y a plus de vehicules disponibles à moins de 200m"
+                    Next.visibility = View.INVISIBLE
+                    Rent.visibility = View.INVISIBLE
+                }
+                else{
+                    if(QRcode>=length){QRcode=0}
+                    //QRcode -=1
+                    descriptif.text = liste_vehicules[QRcode].describe()
+                }
             }
             else{
                 QRcode += 1

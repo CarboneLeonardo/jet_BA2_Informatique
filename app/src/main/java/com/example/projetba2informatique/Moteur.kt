@@ -6,7 +6,7 @@ class Moteur(capacite:Int,carburant:Double) {
 
 
 
-    private var CarburantRestant = capacite * carburant
+    private var CarburantRestant = carburant
     private var CarburantConsome = capacite * Random.nextDouble(0.05,0.25)
     //private val instance_Account = Account.getInstance()
 
@@ -24,11 +24,7 @@ class Moteur(capacite:Int,carburant:Double) {
             //instance_Account.debit(1000.toDouble(),CarburantRestant,CarburantConsome)
             CarburantConsome += CarburantRestant
             CarburantRestant= 0.0 // Empeche d'avoir des valeurs de carburant négatives
-            println("le véhicule n'a plus de carburant")
-        }
-        else{
-            //instance_Account.debit(1000.toDouble(),CarburantRestant,CarburantConsome)
-            println("il reste $CarburantRestant du carburant")
+            //println("le véhicule n'a plus de carburant")
         }
         return CarburantConsome
     }

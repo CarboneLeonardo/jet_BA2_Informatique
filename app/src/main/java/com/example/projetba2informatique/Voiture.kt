@@ -5,8 +5,8 @@ import kotlin.random.Random
 class Voiture(override val QRcode: Int):Vehicule(){
 
     override val type = "Voiture"
-    override val Capacite = 100
-    private val Carburant = Random.nextDouble(0.3,0.9)
+    override val Capacite = 20
+    private val Carburant = Random.nextDouble(0.3,0.9)*Capacite
 
     override val moteur : Moteur = Moteur(Capacite,Carburant)
 
