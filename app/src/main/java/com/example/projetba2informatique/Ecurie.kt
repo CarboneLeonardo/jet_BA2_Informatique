@@ -3,11 +3,6 @@ package com.example.projetba2informatique
 class Ecurie:Observable{
     override val observers:ArrayList<Observer> = ArrayList();
     override val vehicules:ArrayList<Vehicule> = ArrayList()
-    var title = ""
-        set(value) {
-            field = value;
-            hasUpdated();
-        }
 }
 
 

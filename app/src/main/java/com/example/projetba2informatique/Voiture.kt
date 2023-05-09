@@ -10,6 +10,8 @@ class Voiture(override val QRcode: Int):Vehicule(){
 
     override val moteur : Moteur = Moteur(Capacite,Carburant)
 
+    fun OpenDoor(bool:Boolean){ Usable=bool }
+
 
 
 //    override fun describe(){

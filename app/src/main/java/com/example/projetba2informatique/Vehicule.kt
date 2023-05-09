@@ -7,7 +7,7 @@ abstract class Vehicule : Observer {
     // Position= une valeur Random entre 1m et 1000m
     abstract val moteur : Moteur
     protected var Usable = true
-    protected var position = Random.nextInt(1,1000)
+    private var position = Random.nextInt(1,1000)
 
     abstract val QRcode :Int
     abstract val type : String

@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var solde:TextView
 
     private val ecurie = Ecurie()
+    //public interface ecurie : Observable
 
     private val nombre_trotinette = 10
     private val nombre_voiture = 1
@@ -93,13 +94,21 @@ class MainActivity : AppCompatActivity() {
                 descriptif.text = "veuilliez appuyer sur le boutton \"NEXT\""
             }
             else{
-                liste_vehicules[QRcode].Usable(false)
+                if(liste_vehicules[QRcode] is Voiture){
+                    val voiture = liste_vehicules[QRcode] as Voiture
+                    voiture.OpenDoor(false)
+                }
+                else if (liste_vehicules[QRcode] is Trotinette){
+                    val trotinette = liste_vehicules[QRcode] as Trotinette
+                    trotinette.Active(false)
+                }
+                else{ liste_vehicules[QRcode].Usable(false) }
+
                 Rent.visibility = View.INVISIBLE
                 Scan.visibility = View.INVISIBLE
                 Next.visibility = View.INVISIBLE
                 Stop.visibility = View.VISIBLE
             }
-
         }
 
         // Boutton : NEXT //
@@ -137,7 +146,19 @@ class MainActivity : AppCompatActivity() {
             val CarburantConsome = liste_vehicules[QRcode].moteur.consomer()
             solde.text = Account.debit(CarburantRestant,CarburantConsome).toString()
 
-            liste_vehicules[QRcode].Usable(true)
+
+
+            if(liste_vehicules[QRcode] is Voiture){
+                val voiture = liste_vehicules[QRcode] as Voiture
+                voiture.OpenDoor(true)
+            }
+            else if (liste_vehicules[QRcode] is Trotinette){
+                val trotinette = liste_vehicules[QRcode] as Trotinette
+                trotinette.Active(true)
+            }
+            else{ liste_vehicules[QRcode].Usable(false) } // !!!!!!!!!!!!!!!!!!!!!!
+
+
             val text = liste_vehicules[QRcode].describe() // NE PAS CHANGER CETTE LIGNE DE CODE
             descriptif.text = text // NE PAS CHANGER CETTE LIGNE DE CODE
 

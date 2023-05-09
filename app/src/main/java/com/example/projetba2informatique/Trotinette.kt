@@ -10,6 +10,8 @@ class Trotinette(override val QRcode:Int):Vehicule(){
 
     override val moteur : Moteur = Moteur(Capacite,Carburant)
 
+    fun Active(x:Boolean){ Usable=x }
+
 
 //    override fun describe(){
 //
